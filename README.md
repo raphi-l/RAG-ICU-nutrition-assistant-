@@ -43,12 +43,9 @@ CUDA available: True
 
 ## Part 2: Project Declaration
 
-<details><summary><code># TODO: Fill in your project details</code></summary>
+<details><summary><code>PROJECT_INFO = </code></summary>
 
 ```python
-# ============================================================
-# TODO: Fill in your project details
-# ============================================================
 
 PROJECT_INFO = {
     "scenario": "Personal Interest",
@@ -588,10 +585,6 @@ all_chunks[3], all_metadatas[3], all_ids[3]
 
 ### Chunking Strategy Justification
 
-**TODO:** In the cell below, explain your chunking decisions:
-
-*Double-click to edit this cell*
-
 **Rationale of Chunk Size**
 
 In the ASPEN 2016 guidelines, clincal questions and scenarios are generally 10-20 words (100-200 characters) long. Clincal guideance paragraphs are generally 200-300 words (1500-3000 characters long).
@@ -627,13 +620,12 @@ embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
 #     model_name="abhinand/MedEmbed-base-v0.1"  # upgrade from small
 # )
 
-# TODO: Create your collection with a descriptive name
 # Include metadata describing your knowledge base
 
 collection = chroma_client.create_collection(
     name="ICU-nutritition-guidelines-db",
     embedding_function=embedding_function,
-    metadata={"description": "database of best practice for nutrititon intervention in the adult ICU patient"}  # TODO: Change this
+    metadata={"description": "database of best practice for nutrititon intervention in the adult ICU patient"} 
 )
 
 print("Collection created!")
@@ -804,13 +796,9 @@ model.safetensors: downloading bytes:           |  0.00B
 QA model loaded!
 ```
 
-<details><summary><code># TODO: Implement your RAG Pipeline class</code></summary>
+<details><summary><code># class RAGAssistant:</code></summary>
 
 ```python
-# ============================================================
-# TODO: Implement your RAG Pipeline class
-# ============================================================
-
 class RAGAssistant:
     """
     A complete RAG-powered knowledge assistant.
@@ -847,7 +835,7 @@ class RAGAssistant:
         Returns:
             Dict containing documents, metadatas, and ids
         """
-        # TODO: Implement retrieval
+
         results = self.collection.query(
             query_texts=[query],
             n_results = self.n_results
@@ -866,7 +854,6 @@ class RAGAssistant:
         Returns:
             Dict with answer and confidence score
         """
-        # TODO: Implement answer generation
 
         result = self.qa_model(question=question,
                                context=context)
@@ -899,7 +886,6 @@ class RAGAssistant:
             - sources: List of source documents used
             - is_confident: Boolean indicating if confidence met threshold
         """
-        # TODO: Implement the complete pipeline
 
         retrieved = self.retrieve(query=question,
                                   n_results = self.n_results)
@@ -939,7 +925,6 @@ class RAGAssistant:
         Returns:
             Formatted string response
         """
-        # TODO: Implement response formatting
 
         question = result['question']
 
@@ -1023,14 +1008,10 @@ Q: What is the standard calorie provision for the ICU patient?
 
 Test your system thoroughly with at least 15 questions covering different types and difficulty levels.
 
-<details><summary><code># TODO: Create your comprehensive test suite</code></summary>
+<details><summary><code>test_suite = {</code></summary>
 
 ```python
-# ============================================================
-# TODO: Create your comprehensive test suite
-# ============================================================
 
-# Organize your test questions by category
 test_suite = {
     "simple_facts": [
         # Questions with straightforward, single-fact answers
@@ -1276,9 +1257,7 @@ def run_demo(assistant, demo_questions: List[str]):
     print("="*70)
 
 
-# Select 5 of your best questions for the demo
 demo_questions = [
-    # TODO: Choose 5 questions that showcase your system well
     "What is the standard protein range for the ICU patient?",
     "What is the gold-standard for determining energy needs in the ICU?",
     "Are the bowel sounds required before the initation of enteral tube feeds",
